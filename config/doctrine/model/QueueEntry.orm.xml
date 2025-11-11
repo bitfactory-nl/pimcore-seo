@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="https://www.doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="https://www.doctrine-project.org/schemas/orm/doctrine-mapping
+                                      https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="SeoBundle\Model\QueueEntry" table="seo_queue_entry">
+        <id name="uuid" type="uuid">
+            <generator class="Symfony\Bridge\Doctrine\IdGenerator\UuidGenerator"/>
+        </id>
+
+        <field name="type" column="`type`" type="string" nullable="false"/>
+        <field name="dataType" column="data_type" type="string" nullable="false"/>
+        <field name="dataId" column="data_id" type="integer" nullable="false"/>
+        <field name="dataUrl" column="data_url" type="text" nullable="false"/>
+        <field name="worker" type="string" nullable="false"/>
+        <field name="resourceProcessor" column="resource_processor" type="string" nullable="false"/>
+        <field name="creationDate" column="creation_date" type="datetime" nullable="false"/>
+    </entity>
+</doctrine-mapping>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="https://www.doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="https://www.doctrine-project.org/schemas/orm/doctrine-mapping
+                                      https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="SeoBundle\Model\ElementMetaData" table="seo_element_meta_data">
+        <id name="id" type="integer">
+            <generator strategy="AUTO"/>
+        </id>
+
+        <field name="elementType" column="element_type" type="string" nullable="false"/>
+        <field name="elementId" column="element_id" type="integer" nullable="false"/>
+        <field name="integrator" type="string" nullable="false"/>
+        <field name="data" type="json" nullable="false"/>
+        <field name="releaseType" column="release_type" type="string" nullable="false" options="{&quot;default&quot;:&quot;public&quot;}"/>
+
+        <unique-constraint name="element_type_id_integrator">
+            <column name="element_type"/>
+            <column name="element_id"/>
+            <column name="integrator"/>
+            <column name="release_type"/>
+        </unique-constraint>
+    </entity>
+</doctrine-mapping>
