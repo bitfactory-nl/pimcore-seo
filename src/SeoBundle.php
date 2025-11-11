@@ -68,7 +68,7 @@ class SeoBundle extends AbstractPimcoreBundle
         $container->addCompilerPass(
             DoctrineOrmMappingsPass::createXmlMappingDriver(
                 [
-                    realpath(__DIR__ . '/../config/doctrine/model') => 'SeoBundle\Model',
+                    realpath($this->getNameSpacePath()) => $this->getNamespaceName(),
                 ],
                 ['seo.persistence.doctrine.manager'],
                 'seo.persistence.doctrine.enabled'
@@ -83,10 +83,6 @@ class SeoBundle extends AbstractPimcoreBundle
 
     protected function getNameSpacePath(): string
     {
-        return sprintf(
-            '%s/src/%s',
-            $this->getPath(),
-            'Model'
-        );
+        return realpath(__DIR__ . '/../config/doctrine/model');
     }
 }
